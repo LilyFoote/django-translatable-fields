@@ -2,6 +2,7 @@ from setuptools import setup, find_packages
 
 
 install_requires = (
+    'django-hstore>=1.3,<1.4',
 )
 
 
