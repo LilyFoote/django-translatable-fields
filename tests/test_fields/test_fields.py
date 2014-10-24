@@ -8,3 +8,7 @@ class TestTranslatableField(TestCase):
         name = 'Name'
         instance = TranslatableModel(name={'en': name})
         self.assertEqual(instance.name['en'], name)
+
+    def test_save(self):
+        instance = TranslatableModel()
+        instance.save()

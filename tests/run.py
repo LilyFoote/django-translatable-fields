@@ -16,7 +16,11 @@ settings.configure(
         ),
     },
     DEFAULT_FILE_STORAGE='inmemorystorage.InMemoryStorage',
-    INSTALLED_APPS=(),
+    INSTALLED_APPS=(
+        'tests.test_fields',
+
+        'django_hstore',
+    ),
     MIDDLEWARE_CLASSES=(),
 )
 
