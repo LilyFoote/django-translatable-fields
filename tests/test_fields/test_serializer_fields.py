@@ -56,3 +56,10 @@ class TestTranslatableField(TestCase):
 
         expected_data = {'name': None}
         self.assertEqual(serializer.data, expected_data)
+
+    @override_settings(LANGUAGE_CODE='en-gb')
+    def test_serialize_english_gb_strict(self):
+        serializer = serializers.StrictSerializer(self.instance)
+
+        expected_data = {'name': None}
+        self.assertEqual(serializer.data, expected_data)
