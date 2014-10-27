@@ -63,3 +63,26 @@ class TestTranslatableField(TestCase):
 
         expected_data = {'name': None}
         self.assertEqual(serializer.data, expected_data)
+
+    @override_settings(LANGUAGE_CODE='en')
+    def test_deserialize_english(self):
+        new_name = 'New Name'
+        data = {'name': new_name}
+        serializer = serializers.TranslatableSerializer(data=data)
+
+        self.assertTrue(serializer.is_valid(), serializer.errors)
+        expected_data = {'en': new_name}
+        self.assertEqual(serializer.object.name, expected_data)
+
+    @override_settings(LANGUAGE_CODE='en')
+    def test_deserialize_english_existing_instance(self):
+        new_name = 'New Name'
+        data = {'name': new_name}
+        serializer = serializers.TranslatableSerializer(
+            self.instance,
+            data=data,
+        )
+
+        self.assertTrue(serializer.is_valid(), serializer.errors)
+        expected_data = {'en': new_name, 'pt-br': self.brazilian_name}
+        self.assertEqual(serializer.object.name, expected_data)

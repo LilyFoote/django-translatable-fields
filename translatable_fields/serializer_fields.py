@@ -25,3 +25,8 @@ class TranslatableField(HStoreField):
         elif self.fallback is not None:
             return translations.get(self.fallback, None)
         return None
+
+    def from_native(self, value):
+        current_language = translation.get_language()
+        translations = {current_language: value}
+        return super().from_native(translations)
