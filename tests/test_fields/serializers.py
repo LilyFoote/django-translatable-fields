@@ -10,3 +10,11 @@ class TranslatableSerializer(serializers.ModelSerializer):
     class Meta:
         fields = ('name',)
         model = TranslatableModel
+
+
+class FallbackSerializer(serializers.ModelSerializer):
+    name = TranslatableField(fallback='en')
+
+    class Meta:
+        fields = ('name',)
+        model = TranslatableModel
