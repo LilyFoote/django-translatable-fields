@@ -12,11 +12,15 @@ import dj_database_url
 settings.configure(
     DATABASES={
         'default': dj_database_url.config(
-            default='postgres://localhost/translatable_fields',
+            default='postgres:///translatable_fields',
         ),
     },
     DEFAULT_FILE_STORAGE='inmemorystorage.InMemoryStorage',
-    INSTALLED_APPS=(),
+    INSTALLED_APPS=(
+        'tests.test_fields',
+
+        'django_hstore',
+    ),
     MIDDLEWARE_CLASSES=(),
 )
 

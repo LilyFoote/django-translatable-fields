@@ -1,4 +1,4 @@
--e .
+-e .[rest]
 
 colour-runner==0.0.4
 coverage==3.7.1

@@ -1,0 +1,13 @@
+language: python
+python: "3.4"
+install:
+    - pip install $DJANGO
+    - pip install -r test_requirements.txt
+script: make test
+env:
+    - DJANGO='django>=1.7,<1.8'
+addons:
+    postgresql: "9.3"
+before_script:
+    - psql -c 'create database translatable_fields;' -U postgres
+    - psql template1 -c 'create extension hstore;'

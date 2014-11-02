@@ -2,7 +2,15 @@ from setuptools import setup, find_packages
 
 
 install_requires = (
+    'django-hstore>=1.3,<1.4',
+    'langcodes>=1.0,<1.1',
 )
+
+extras_require = {
+    'rest': [
+        'djangorestframework-hstore>=1.1,<1.2',
+    ],
+}
 
 
 classifiers = (
@@ -25,6 +33,7 @@ setup(
     author_email='admin@incuna.com',
     url='',
     install_requires=install_requires,
+    extras_require=extras_require,
     license='MIT',
     classifiers=classifiers,
     zip_safe=False,
